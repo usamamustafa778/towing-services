@@ -1,0 +1,131 @@
+.hero{
+    background-image:url(../../public/images/banner-img1.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+.h-icon{
+    height: 30px;
+}
+.logo{
+    max-height: 100px;
+}
+.hero-container > h1{
+    font-size: 60px;
+}
+.divider-line{
+    height: 2px;
+    min-width: 400px;
+    background-color: var(--lightGray);
+}
+
+
+/* Work */
+.icon-bg{
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    background-color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-bg > img{
+    height: 65px;
+}
+
+
+
+/* services */
+.services{
+    background-image: url(../../public/images/all-service-bg.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+    background-position:center;
+}
+.serviceBox{
+    display: grid;
+    grid-template-columns: 30px 1fr;
+}
+
+
+.img-fluid{
+    width: 100%;
+    cursor: pointer;
+}
+.no-gutters > a{
+    padding: 10px !important;
+}
+
+
+
+/* cta  */
+.callRow{
+    background-image: url(../../public/images/call-bg.jpg);
+    background-size:cover;
+    background-position:center;
+}
+.cmnt{
+    height: 50px;
+}
+.carousel{
+    width: 100%;
+    margin-top: -30px;
+}
+.carousel-item{
+    width: 100% !important;
+    height: 250px;
+}
+.carousel-item > p{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.star{
+    height: 20px;
+    margin: 2px;
+}
+
+
+/* Services Areas */
+.relatedTags{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.564), rgba(0, 0, 0, 0.527)),url(../../public/images/tags-bg.jpg);
+    background-size:cover;
+    background-position:center;
+}
+.relatedTags > .container{
+    border-radius: 40px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .header{
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo{
+        margin: 30px 0px;
+        height: 60px;
+    }
+    .divider-line{
+        width: 250px;
+    }
+    .header > .col-md-3{
+        display: none;
+    }
+    .hero-container > h1{
+        font-size: 45px;
+    }
+    .hero-container > h2{
+        font-size: 30px;
+    }
+    .hero-container > h4{
+        font-size: 20px;
+    }
+  }
