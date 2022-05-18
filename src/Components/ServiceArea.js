@@ -4,23 +4,10 @@ import axios from "axios";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import apiJson from "../newjson.json";
 
-function ServiceArea({ match }) {
-  const [apiData, setApiData] = useState([]);
-  useEffect(() => {
-    const apiDatas = async () => {
-      try {
-        const response = await axios.get(
-          "http://api.3utilities.com:86/states?token=MucabF_PcS_KcjU_ucabHPc"
-        );
-        setApiData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    apiDatas();
-  }, []);
+function ServiceArea({ apiData }) {
   // console.log(apiJson);
   // const { services } = apiJson;
+  console.log(apiData);
 
   const { states } = apiData;
 
