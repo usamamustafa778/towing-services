@@ -11,7 +11,9 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/:state" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route index path={"/:state"} element={<Home />} />
+          <Route index path={"/:state/:city"} element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>

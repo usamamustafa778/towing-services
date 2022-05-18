@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./style.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import apiJson from "../newjson.json";
 
-function ServiceArea() {
+function ServiceArea({ match }) {
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
     const apiDatas = async () => {
@@ -18,6 +19,9 @@ function ServiceArea() {
     };
     apiDatas();
   }, []);
+  // console.log(apiJson);
+  // const { services } = apiJson;
+
   const { states } = apiData;
 
   return (
@@ -32,9 +36,26 @@ function ServiceArea() {
                   states.map((state, index) => (
                     <div key={index}>
                       <li>
-                        <Link className="item-list" to={`/${state}`}>
+                        {/* <Link className="item-list" to={`/${state}`}>
+                          {state}
+                        </Link> */}
+                        {/* //remove spaces from state name */}
+                        <Link
+                          className="item-list"
+                          to={`/${state.replace(/\s/g, "")}`}
+                        >
                           {state}
                         </Link>
+                        <Link to={`/${state.replace(/\s/g, "")}/city`}>
+                          check
+                        </Link>
+                        <Routes>
+                          <Route path={"/:state"} element={<h1>Saud</h1>} />
+                          <Route
+                            to={`/${state.replace(/\s/g, "")}/city`}
+                            element={<h1>Saud</h1>}
+                          />
+                        </Routes>
                       </li>
                     </div>
                   ))

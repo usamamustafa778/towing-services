@@ -1,0 +1,123 @@
+{
+    "services": {
+        "rug cleaning": {
+            "us,ca,monterey,rug cleaning": {
+                "pattern": "10022-ca-monterey-fast-cleaning-rug-cleaning",
+                "service": "rug cleaning",
+                "country": "us",
+                "state": "ca",
+                "city": "monterey",
+                "keyword": "fast cleaning",
+                "zipcode": "10022",
+                "lat": "1",
+                "long": "5",
+                "phone": "999999",
+                "tel": "99999",
+                "open": "10am",
+                "close": "8am",
+                "tags": "tag33221",
+                "texts": {
+                    "heading": "Welcome to monterey ca",
+                    "sub-title": "Super service in us",
+                    "msg": "Altimes it's just better not to be seen. ",
+                    "salute": "Hi there, therefore, fast cleaning, tag33221",
+                    "footer": "Super service in 10022-ca-monterey-fast-cleaning-rug-cleaning"
+                }
+            },
+            "us,ca,beverly hills,rug cleaning": {
+                "pattern": "ca-beverly-hills-super-cleaning-rug-cleaning",
+                "service": "rug cleaning",
+                "country": "us",
+                "state": "ca",
+                "city": "beverly hills",
+                "keyword": "super cleaning",
+                "zipcode": "10022",
+                "lat": "2",
+                "long": "6",
+                "phone": "999999",
+                "tel": "99999",
+                "open": "10am",
+                "close": "8am",
+                "tags": "tagrtt",
+                "texts": {
+                    "heading": "Welcome to beverly hills ca",
+                    "sub-title": "Super service in us",
+                    "msg": "Altimes it's just better not to be seen. ",
+                    "salute": "Hi there, therefore, super cleaning, tagrtt",
+                    "footer": "Super service in ca-beverly-hills-super-cleaning-rug-cleaning"
+                }
+            }
+        },
+        "towing service": {
+            "us,ca,monterey,towing service": {
+                "pattern": "some-change-ca-monterey-10022",
+                "service": "towing service",
+                "country": "us",
+                "state": "ca",
+                "city": "monterey",
+                "keyword": "some change",
+                "zipcode": "10022",
+                "lat": "1",
+                "long": "5",
+                "phone": "999999",
+                "tel": "99999",
+                "open": "10am",
+                "close": "8am",
+                "tags": "tag111",
+                "texts": {
+                    "txt1": "Welcome to monterey ca",
+                    "txt2": "The best service in us",
+                    "txt3": "call 999999 Sometimes it's just better not to be seen. tag111 some-change-ca-monterey-10022",
+                    "txt4": "The trees, therefore, some change, must 10022",
+                    "chalo": "kaha chale? us "
+                }
+            },
+            "us,ny,ny city,towing service": {
+                "pattern": "jump-start-ny-city-ny-towing-service",
+                "service": "towing service",
+                "country": "us",
+                "state": "ny",
+                "city": "ny city",
+                "keyword": "jump start",
+                "zipcode": "10022",
+                "lat": "1",
+                "long": "5",
+                "phone": "999999",
+                "tel": "99999",
+                "open": "10am",
+                "close": "8am",
+                "tags": "tag333 333",
+                "texts": {
+                    "txt1": "Welcome to ny city ny",
+                    "txt2": "The best service in us",
+                    "txt3": "call 999999 Sometimes it's just better not to be seen. tag333 333 jump-start-ny-city-ny-towing-service",
+                    "txt4": "The trees, therefore, jump start, must 10022",
+                    "chalo": "kaha chale? us "
+                }
+            },
+            "us,ca,beverly hills,towing service": {
+                "pattern": "ca-beverly-hills-jump-start-123",
+                "service": "towing service",
+                "country": "us",
+                "state": "ca",
+                "city": "beverly hills",
+                "keyword": "jump start 123",
+                "zipcode": "10022",
+                "lat": "2",
+                "long": "6",
+                "phone": "999999",
+                "tel": "99999",
+                "open": "10am",
+                "close": "8am",
+                "tags": "tag5353 00",
+                "texts": {
+                    "txt1": "Welcome to beverly hills ca",
+                    "txt2": "The best service in us",
+                    "txt3": "call 999999 Sometimes it's just better not to be seen. tag5353 00 ca-beverly-hills-jump-start-123",
+                    "txt4": "The trees, therefore, jump start 123, must 10022",
+                    "chalo": "kaha chale? us "
+                }
+            }
+        }
+    }
+}
