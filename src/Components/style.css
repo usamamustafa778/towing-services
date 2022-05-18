@@ -1,3 +1,7 @@
+.location-param{
+    text-transform:capitalize;
+}
+
 .hero{
     background-image:url(../../public/images/banner-img1.jpg);
     background-size: cover;
@@ -100,6 +104,9 @@
 }
 .relatedTags > .container{
     border-radius: 40px;
+}
+.item-list{
+    color:black !important;
 }
 
 
