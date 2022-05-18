@@ -7,25 +7,9 @@ import SD2 from "../Components/SD2";
 import ServiceArea from "../Components/ServiceArea";
 import Services from "../Components/Services";
 import Work from "../Components/Work";
-import axios from "axios";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function Home() {
-  const [apiData, setApiData] = useState([]);
-  useEffect(() => {
-    const apiDatas = async () => {
-      try {
-        const response = await axios.get(
-          "http://api.3utilities.com:86/states?token=MucabF_PcS_KcjU_ucabHPc"
-        );
-        setApiData(response.data);
-        console.log(apiData);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    apiDatas();
-  }, []);
 
   return (
     <div>
@@ -35,12 +19,14 @@ function Home() {
       <Services />
       <SD2 />
       <CTA />
-      {/* <Routes>
-        <Route path="/" element={<Home />} />
-        <Route index path={"/:state"} element={<Home />} />
-        <Route index path={"/:state/:city"} element={<Home />} />
-      </Routes> */}
-      <ServiceArea apiData={apiData} />
+
+      <Routes>
+        <Route path="/" element={<ServiceArea comTitle="Province List"/>} />
+        <Route path="/texas" element={<ServiceArea comTitle="Province Component"  comDes="Province Component List" />} />
+        <Route path="/texas/houstan" element={<ServiceArea comTitle="Cities Component"  comZip="Cities Component Zips List"/>} />
+        <Route path="/texas/houstan/zips" element={<ServiceArea comTitle="Zips Component"  />} />
+      </Routes>
+      
       <Footer />
     </div>
   );
