@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function ServiceArea({ comTitle, comDes, comZip }) {
-
+function ServiceArea({ states, cities }) {
   return (
     <div className="container-fluid py-5 mt-5">
       <div className="container">
@@ -12,7 +12,9 @@ function ServiceArea({ comTitle, comDes, comZip }) {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-12">
-                <Link className="item-list" to="/texas">
+                {cities ? cities.map((city, i) => <h1>{city}</h1>) : null}
+
+                {/* <Link className="item-list" to="/texas">
                   <h1>{comTitle}</h1>
                 </Link>
                 <Link to="/texas/houstan">
@@ -20,7 +22,7 @@ function ServiceArea({ comTitle, comDes, comZip }) {
                 </Link>
                 <Link to="/texas/houstan/zips">
                   <h1>{comZip}</h1>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

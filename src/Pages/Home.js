@@ -7,31 +7,79 @@ import SD2 from "../Components/SD2";
 import ServiceArea from "../Components/ServiceArea";
 import Services from "../Components/Services";
 import Work from "../Components/Work";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import axios from "axios";
 
 function Home() {
+  const [apiData, setApiData] = useState([]);
+  const [apiData2, setApiData2] = useState([]);
+  const [condition, setCondition] = useState(false);
+  useEffect(() => {
+    const apiDatas = async () => {
+      try {
+        const response = await axios.get(
+          "http://api.3utilities.com:86/states?token=MucabF_PcS_KcjU_ucabHPc"
+        );
+        setApiData(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    apiDatas();
+  }, []);
+
+  const handleClick = async (state) => {
+    alert(state);
+    //api get call
+
+    try {
+      const response = await axios.get(
+        `http://api.3utilities.com:86/cities?state=${state}&token=MucabF_PcS_KcjU_ucabHPc`
+      );
+
+      setApiData2(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // on click get this->value
+  // api get cities='www.3utilities.com/states/{this->value}'
+  // new li cities.map
+  console.log("api2", apiData2.cities);
+
+  const { cities } = apiData2;
+
+  const { states } = apiData;
   return (
     <div>
       <Hero />
+      {/* //map data from api */}
+
       <Work />
       <SD1 />
       <Services />
       <SD2 />
       <CTA />
-
       <Routes>
-        <Route path="/" element={<ServiceArea comTitle="Province List" />} />
         <Route
-          path="/texas"
+          path="/"
           element={
-            <ServiceArea
-              comTitle="Province Component"
-              comDes="Province Component List"
-            />
+            <>
+              {states
+                ? states.map((state, i) => (
+                    <Link onClick={() => handleClick(state)} to={`/${state}`}>
+                      <li>{state}</li>
+                    </Link>
+                  ))
+                : null}
+            </>
           }
         />
-        <Route
-          path="/texas/houstan"
+
+        <Route path="/:state" element={<ServiceArea cities={cities} />}></Route>
+        {/* <Route
+          path="/texas"
           element={
             <ServiceArea
               comTitle="Cities Component"
@@ -42,9 +90,8 @@ function Home() {
         <Route
           path="/texas/houstan/zips"
           element={<ServiceArea comTitle="Zips Component" />}
-        />
+        /> */}
       </Routes>
-
       <Footer />
     </div>
   );
