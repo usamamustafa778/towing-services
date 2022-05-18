@@ -10,7 +10,6 @@ import Work from "../Components/Work";
 import { Routes, Route } from "react-router-dom";
 
 function Home() {
-
   return (
     <div>
       <Hero />
@@ -21,12 +20,31 @@ function Home() {
       <CTA />
 
       <Routes>
-        <Route path="/" element={<ServiceArea comTitle="Province List"/>} />
-        <Route path="/texas" element={<ServiceArea comTitle="Province Component"  comDes="Province Component List" />} />
-        <Route path="/texas/houstan" element={<ServiceArea comTitle="Cities Component"  comZip="Cities Component Zips List"/>} />
-        <Route path="/texas/houstan/zips" element={<ServiceArea comTitle="Zips Component"  />} />
+        <Route path="/" element={<ServiceArea comTitle="Province List" />} />
+        <Route
+          path="/texas"
+          element={
+            <ServiceArea
+              comTitle="Province Component"
+              comDes="Province Component List"
+            />
+          }
+        />
+        <Route
+          path="/texas/houstan"
+          element={
+            <ServiceArea
+              comTitle="Cities Component"
+              comZip="Cities Component Zips List"
+            />
+          }
+        />
+        <Route
+          path="/texas/houstan/zips"
+          element={<ServiceArea comTitle="Zips Component" />}
+        />
       </Routes>
-      
+
       <Footer />
     </div>
   );
