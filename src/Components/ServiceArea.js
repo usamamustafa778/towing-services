@@ -59,4 +59,3 @@ function ServiceArea({ apiData }) {
 }
 
 export default ServiceArea;
-

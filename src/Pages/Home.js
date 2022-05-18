@@ -8,6 +8,7 @@ import ServiceArea from "../Components/ServiceArea";
 import Services from "../Components/Services";
 import Work from "../Components/Work";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function Home() {
   const [apiData, setApiData] = useState([]);
@@ -34,6 +35,7 @@ function Home() {
       <Services />
       <SD2 />
       <CTA />
+
       <ServiceArea apiData={apiData} />
       <Footer />
     </div>
