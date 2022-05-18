@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route index path={"/:state"} element={<Home />} />
