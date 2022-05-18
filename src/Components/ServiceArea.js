@@ -42,17 +42,17 @@ function ServiceArea({ match }) {
                         {/* //remove spaces from state name */}
                         <Link
                           className="item-list"
-                          to={`/${state.replace(/\s/g, "")}`}
+                          to={`/${state.replace(/\s/g, "-")}`}
                         >
                           {state}
                         </Link>
-                        <Link to={`/${state.replace(/\s/g, "")}/city`}>
+                        <Link to={`/${state.replace(/\s/g, "-")}/city`}>
                           check
                         </Link>
                         <Routes>
                           <Route path={"/:state"} element={<h1>Saud</h1>} />
                           <Route
-                            to={`/${state.replace(/\s/g, "")}/city`}
+                            to={`/${state.replace(/\s/g, "-")}/city`}
                             element={<h1>Saud</h1>}
                           />
                         </Routes>
