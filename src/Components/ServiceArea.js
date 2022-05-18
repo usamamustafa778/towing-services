@@ -37,10 +37,10 @@ function ServiceArea({ apiData }) {
                           check
                         </Link>
                         <Routes>
-                          <Route path={"/:state"} element={<h1>Saud</h1>} />
+                          <Route path={"/:state"} element={<h1>pakistan</h1>} />
                           <Route
                             to={`/${state.replace(/\s/g, "-")}/city`}
-                            element={<h1>Saud</h1>}
+                            element={<h1>islamabad</h1>}
                           />
                         </Routes>
                       </li>

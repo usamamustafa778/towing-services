@@ -35,7 +35,11 @@ function Home() {
       <Services />
       <SD2 />
       <CTA />
-
+      {/* <Routes>
+        <Route path="/" element={<Home />} />
+        <Route index path={"/:state"} element={<Home />} />
+        <Route index path={"/:state/:city"} element={<Home />} />
+      </Routes> */}
       <ServiceArea apiData={apiData} />
       <Footer />
     </div>
