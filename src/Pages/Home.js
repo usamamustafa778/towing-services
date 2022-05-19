@@ -9,18 +9,22 @@ import Services from "../Components/Services";
 import Work from "../Components/Work";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Home() {
   const [apiData, setApiData] = useState([]);
   const [apiData2, setApiData2] = useState([]);
-  const [condition, setCondition] = useState(false);
+  const [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#ffffff");
   useEffect(() => {
     const apiDatas = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
           "http://api.3utilities.com:86/states?token=MucabF_PcS_KcjU_ucabHPc"
         );
         setApiData(response.data);
+        setLoading(false)
       } catch (error) {
         console.log(error);
       }
@@ -33,11 +37,13 @@ function Home() {
     //api get call
 
     try {
+      setLoading(true);
       const response = await axios.get(
         `http://api.3utilities.com:86/cities?state=${state}&token=MucabF_PcS_KcjU_ucabHPc`
       );
 
       setApiData2(response.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -51,8 +57,13 @@ function Home() {
   const { cities } = apiData2;
 
   const { states } = apiData;
+  // if (loading){
+  //   return (<h1 className="">Loading....</h1>)
+  // }
   return (
     <div>
+      {loading &&
+      <div className="spinner"><ClipLoader  color={color} /></div>}
       <Hero />
       {/* //map data from api */}
 
@@ -65,15 +76,15 @@ function Home() {
         <Route
           path="/"
           element={
-            <>
+            <div className="container py-5 mt-5">
               {states
                 ? states.map((state, i) => (
-                    <Link onClick={() => handleClick(state)} to={`/${state}`}>
+                    <Link key={i} onClick={() => handleClick(state)} to={`/${state}`}>
                       <li>{state}</li>
                     </Link>
                   ))
                 : null}
-            </>
+            </div>
           }
         />
 
