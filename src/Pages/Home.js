@@ -10,6 +10,7 @@ import Work from "../Components/Work";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
+import { useParams } from "react-router-dom";
 
 function Home() {
   const [apiData, setApiData] = useState([]);
@@ -60,11 +61,13 @@ function Home() {
   // if (loading){
   //   return (<h1 className="">Loading....</h1>)
   // }
+  const { state } = useParams();
+
   return (
     <div>
       {loading &&
       <div className="spinner"><ClipLoader  color={color} /></div>}
-      <Hero />
+      <Hero state={state} />
       {/* //map data from api */}
 
       <Work />
@@ -79,7 +82,7 @@ function Home() {
             <div className="container py-5 mt-5">
               {states
                 ? states.map((state, i) => (
-                    <Link key={i} onClick={() => handleClick(state)} to={`/${state}`}>
+                    <Link key={i} onClick={() => handleClick(state)} to={`/${state.replace(/\s/g, "-")}`}>
                       <li>{state}</li>
                     </Link>
                   ))

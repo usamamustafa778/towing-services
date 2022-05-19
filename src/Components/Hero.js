@@ -3,9 +3,8 @@ import Header from "./Header";
 import "./style.css";
 import { useParams } from "react-router-dom";
 
-function Hero() {
+function Hero({state}) {
 
-  const { state } = useParams();
 
   return (
     <div className="hero contianer-fluid">
