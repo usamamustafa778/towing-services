@@ -10,6 +10,7 @@ import Work from "../Components/Work";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
+import ZipCodes from "../Components/ZipCodes";
 
 function Home() {
   const [apiData, setApiData] = useState([]);
@@ -17,6 +18,7 @@ function Home() {
   const [apiData3, setApiData3] = useState([]);
   const [loading, setLoading] = useState(false);
   const [stateName, setStateName] = useState("");
+  const [cityShow, setCityShow] = useState(true);
 
   let [color, setColor] = useState("#ffffff");
   useEffect(() => {
@@ -55,24 +57,27 @@ function Home() {
 
   const { cities } = apiData2;
   const { states } = apiData;
-  const { zips } = apiData3;
 
-  const handleClick2 = async (city, stateName) => {
-    try {
-      setLoading(true);
-      const response = await axios.get(
-        `http://api.3utilities.com:86/zips?state=${stateName}&city=${city}&token=MucabF_PcS_KcjU_ucabHPc`
-      );
-      // http://api.3utilities.com:86/zips?state=texas&city=houston&token=MucabF_PcS_KcjU_ucabHPc
+  // const handleClick2 = async (city, stateName) => {
+  //   try {
+  //     alert("called home api");
+  //     setLoading(true);
+  //     const response = await axios.get(
+  //       `http://api.3utilities.com:86/zips?state=${stateName}&city=${city}&token=MucabF_PcS_KcjU_ucabHPc`
+  //     );
+  //     // http://api.3utilities.com:86/zips?state=texas&city=houston&token=MucabF_PcS_KcjU_ucabHPc
 
-      setApiData3(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     setApiData3(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  console.log("api", cities, states);
+  console.log("api data is", apiData3);
+
+  const { zipList, zips } = apiData3;
+  console.log("zipList", zips);
 
   return (
     <div>
@@ -113,9 +118,12 @@ function Home() {
         <Route
           path="/:state"
           element={
-            <ServiceArea 
-              stName={stateName} 
-              cities={cities} 
+            <ServiceArea
+              cityShow={true}
+              stName={stateName}
+              cities={cities}
+              apiData3={apiData3}
+              setApiData3={setApiData3}
             />
           }
         ></Route>
@@ -124,11 +132,20 @@ function Home() {
           path="/:state/:city"
           element={
             <ServiceArea
+              cityShow={true}
               stName={stateName}
               cities={cities}
-              zipList={zips}
-              onClick={() => handleClick2(cities, stateName)}
+              apiData3={apiData3}
+              setApiData3={setApiData3}
             />
+          }
+        ></Route>
+        <Route
+          path="/:state/:city/zipcode"
+          element={
+            <>
+              <ZipCodes zips={zips} />
+            </>
           }
         ></Route>
       </Routes>
