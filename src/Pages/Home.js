@@ -38,7 +38,6 @@ function Home() {
   }, []);
 
   const handleClick = async (state) => {
-    console.log(stateName);
     alert(state);
 
     //api get call
@@ -74,10 +73,7 @@ function Home() {
   //   }
   // };
 
-  console.log("api data is", apiData3);
-
   const { zipList, zips } = apiData3;
-  console.log("zipList", zips);
 
   return (
     <div>
@@ -122,24 +118,14 @@ function Home() {
               cityShow={true}
               stName={stateName}
               cities={cities}
+              loading={loading}
+              setLoading={setLoading}
               apiData3={apiData3}
               setApiData3={setApiData3}
             />
           }
         ></Route>
 
-        <Route
-          path="/:state/:city"
-          element={
-            <ServiceArea
-              cityShow={true}
-              stName={stateName}
-              cities={cities}
-              apiData3={apiData3}
-              setApiData3={setApiData3}
-            />
-          }
-        ></Route>
         <Route
           path="/:state/:city/zipcode"
           element={
