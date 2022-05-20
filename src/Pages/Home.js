@@ -38,8 +38,8 @@ function Home() {
   const handleClick = async (state) => {
     console.log(stateName);
     alert(state);
-    //api get call
 
+    //api get call
     try {
       setLoading(true);
       const response = await axios.get(
@@ -55,6 +55,7 @@ function Home() {
 
   const { cities } = apiData2;
   const { states } = apiData;
+  const { zips } = apiData3;
 
   const handleClick2 = async (city, stateName) => {
     try {
@@ -111,31 +112,25 @@ function Home() {
 
         <Route
           path="/:state"
-          element={<ServiceArea stName={stateName} cities={cities} />}
-        ></Route>
-
-        <Route
-          path={`/${stateName}/:city`}
           element={
-            <button onClick={() => handleClick2(cities, stateName)}>
-              Saud
-            </button>
-          }
-        ></Route>
-
-        {/* <Route
-          path="/texas"
-          element={
-            <ServiceArea
-              comTitle="Cities Component"
-              comZip="Cities Component Zips List"
+            <ServiceArea 
+              stName={stateName} 
+              cities={cities} 
             />
           }
-        />
+        ></Route>
+
         <Route
-          path="/texas/houstan/zips"
-          element={<ServiceArea comTitle="Zips Component" />}
-        /> */}
+          path="/:state/:city"
+          element={
+            <ServiceArea
+              stName={stateName}
+              cities={cities}
+              zipList={zips}
+              onClick={() => handleClick2(cities, stateName)}
+            />
+          }
+        ></Route>
       </Routes>
       <Footer />
     </div>
