@@ -36,8 +36,7 @@ function Home() {
 
   
   const handleClick = async (state) => {
-    console.log(stateName);
-    setStateName(state);
+    console.log(stateName); 
     alert(state);
     //api get call
 
@@ -81,7 +80,7 @@ function Home() {
                 ? states.map((state, i) => (
                     <Link
                       key={i}
-                      onClick={() => handleClick(state)}
+                      onClick={() => {handleClick(state); setStateName(state);}}
                       to={`/${state.replace(/\s/g, "-")}`}
                     >
                       <li>{state}</li>
