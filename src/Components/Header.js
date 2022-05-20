@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import Button from "./Button";
 import "./style.css";
 
-function Header() {
-
-  const {state} = useParams();
+function Header({ stName }) {
+  const { state } = useParams();
 
   return (
     <div className="container">
@@ -13,14 +12,14 @@ function Header() {
         <div className="col-md-3">
           <div className="d-flex">
             <img src="/images/icons/loc.png" className="h-icon" alt="" />
-            <h3 className="text-white location-param ml-2"> {state} </h3>
+            <h3 className="text-white location-param ml-2"> {stName} </h3>
           </div>
         </div>
         <div className="col-md-6 d-flex justify-content-center">
           <img src="/images/logo.png" className="logo" alt="" />
         </div>
         <div className="col-md-3">
-          <Button/>
+          <Button />
         </div>
       </div>
     </div>

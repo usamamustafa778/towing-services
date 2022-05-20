@@ -14,6 +14,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 function Home() {
   const [apiData, setApiData] = useState([]);
   const [apiData2, setApiData2] = useState([]);
+  const [apiData3, setApiData3] = useState([]);
   const [loading, setLoading] = useState(false);
   const [stateName, setStateName] = useState("");
 
@@ -34,9 +35,8 @@ function Home() {
     apiDatas();
   }, []);
 
-  
   const handleClick = async (state) => {
-    console.log(stateName); 
+    console.log(stateName);
     alert(state);
     //api get call
 
@@ -53,10 +53,25 @@ function Home() {
     }
   };
 
-  console.log("api2", apiData2.cities);
-
   const { cities } = apiData2;
   const { states } = apiData;
+
+  const handleClick2 = async (city, stateName) => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `http://api.3utilities.com:86/zips?state=${stateName}&city=${city}&token=MucabF_PcS_KcjU_ucabHPc`
+      );
+      // http://api.3utilities.com:86/zips?state=texas&city=houston&token=MucabF_PcS_KcjU_ucabHPc
+
+      setApiData3(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log("api", cities, states);
 
   return (
     <div>
@@ -80,7 +95,10 @@ function Home() {
                 ? states.map((state, i) => (
                     <Link
                       key={i}
-                      onClick={() => {handleClick(state); setStateName(state);}}
+                      onClick={() => {
+                        handleClick(state);
+                        setStateName(state);
+                      }}
                       to={`/${state.replace(/\s/g, "-")}`}
                     >
                       <li>{state}</li>
@@ -91,7 +109,20 @@ function Home() {
           }
         />
 
-        <Route path="/:state" element={<ServiceArea cities={cities} />}></Route>
+        <Route
+          path="/:state"
+          element={<ServiceArea stName={stateName} cities={cities} />}
+        ></Route>
+
+        <Route
+          path={`/${stateName}/:city`}
+          element={
+            <button onClick={() => handleClick2(cities, stateName)}>
+              Saud
+            </button>
+          }
+        ></Route>
+
         {/* <Route
           path="/texas"
           element={
