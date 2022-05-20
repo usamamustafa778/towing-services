@@ -10,12 +10,13 @@ import Work from "../Components/Work";
 import { Routes, Route, Link } from "react-router-dom";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
-import { useParams } from "react-router-dom";
 
 function Home() {
   const [apiData, setApiData] = useState([]);
   const [apiData2, setApiData2] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [stateName, setStateName] = useState("");
+
   let [color, setColor] = useState("#ffffff");
   useEffect(() => {
     const apiDatas = async () => {
@@ -25,7 +26,7 @@ function Home() {
           "http://api.3utilities.com:86/states?token=MucabF_PcS_KcjU_ucabHPc"
         );
         setApiData(response.data);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -33,7 +34,10 @@ function Home() {
     apiDatas();
   }, []);
 
+  
   const handleClick = async (state) => {
+    console.log(stateName);
+    setStateName(state);
     alert(state);
     //api get call
 
@@ -50,26 +54,19 @@ function Home() {
     }
   };
 
-  // on click get this->value
-  // api get cities='www.3utilities.com/states/{this->value}'
-  // new li cities.map
   console.log("api2", apiData2.cities);
 
   const { cities } = apiData2;
-
   const { states } = apiData;
-  // if (loading){
-  //   return (<h1 className="">Loading....</h1>)
-  // }
-  const { state } = useParams();
 
   return (
     <div>
-      {loading &&
-      <div className="spinner"><ClipLoader  color={color} /></div>}
-      <Hero state={state} />
-      {/* //map data from api */}
-
+      {loading && (
+        <div className="spinner">
+          <ClipLoader color={color} />
+        </div>
+      )}
+      <Hero stName={stateName} />
       <Work />
       <SD1 />
       <Services />
@@ -82,7 +79,11 @@ function Home() {
             <div className="container py-5 mt-5">
               {states
                 ? states.map((state, i) => (
-                    <Link key={i} onClick={() => handleClick(state)} to={`/${state.replace(/\s/g, "-")}`}>
+                    <Link
+                      key={i}
+                      onClick={() => handleClick(state)}
+                      to={`/${state.replace(/\s/g, "-")}`}
+                    >
                       <li>{state}</li>
                     </Link>
                   ))

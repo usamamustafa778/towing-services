@@ -12,7 +12,7 @@ function ServiceArea({ states, cities }) {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-12">
-                {cities ? cities.map((city, i) => <h1>{city}</h1>) : null}
+                {cities ? cities.map((city, i) => <li>{city}</li>) : null}
 
                 {/* <Link className="item-list" to="/texas">
                   <h1>{comTitle}</h1>
