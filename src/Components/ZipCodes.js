@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-function ZipCodes({ zips }) {
+function ZipCodes({ zips, setApiData3, setLoading, loading }) {
+  const { state, city } = useParams();
+  useEffect(() => {
+    const handleClick2 = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `http://api.3utilities.com:86/zips?state=${state}&city=${city}&token=MucabF_PcS_KcjU_ucabHPc`
+        );
+        // http://api.3utilities.com:86/zips?state=texas&city=houston&token=MucabF_PcS_KcjU_ucabHPc
+
+        setApiData3(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleClick2();
+  }, [state, city]);
+
   return (
     <div className="container-fluid py-5 mt-5">
       <div className="container">
