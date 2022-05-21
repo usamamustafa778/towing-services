@@ -7,10 +7,8 @@ import axios from "axios";
 function ServiceArea({ apiData2, setApiData2, loading, setLoading }) {
   const { state, city } = useParams();
   console.log("name is :", state, city);
-  const [stateFilter, setStateFilter] = useState([]);
 
   useEffect(() => {
-    setStateFilter(`${state.replace(/\-/g, "s")}`);
     const handleClick = async () => {
       //api get call
       try {
@@ -46,7 +44,7 @@ function ServiceArea({ apiData2, setApiData2, loading, setLoading }) {
                 <h1>cities</h1>
                 {cities
                   ? cities.map((city, i) => (
-                      <Link to={`/${state}/${city}`}>
+                      <Link to={`/${state}/${city.replace(/\s/g, "-")}`}>
                         <li>{city}</li>
                       </Link>
                     ))
