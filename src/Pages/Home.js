@@ -11,8 +11,10 @@ import { Routes, Route, Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ClipLoader from "react-spinners/ClipLoader";
 import ZipCodes from "../Components/ZipCodes";
+import DocumentMeta from "react-document-meta";
 
 function Home() {
+  
   const [apiData, setApiData] = useState([]);
   const [apiData2, setApiData2] = useState([]);
   const [apiData3, setApiData3] = useState([]);
@@ -55,6 +57,7 @@ function Home() {
       <Services />
       <SD2 />
       <CTA />
+      <DocumentMeta {...meta} />
       <Routes>
         <Route
           path="/"
