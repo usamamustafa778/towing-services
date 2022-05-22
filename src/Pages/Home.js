@@ -60,11 +60,11 @@ function Home() {
 
   return (
     <div>
-      {loading && (
+      {/* {loading && (
         <div className="spinner">
           <ClipLoader color={color} />
         </div>
-      )}
+      )} */}
 
       <Hero stName={stateName} />
       <Work />
@@ -81,6 +81,7 @@ function Home() {
               {states
                 ? states.map((state, i) => (
                     <Link
+                    className="item-list"
                       key={i}
                       onClick={() => {
                         setStateName(state);
