@@ -14,12 +14,11 @@ import ZipCodes from "../Components/ZipCodes";
 import DocumentMeta from "react-document-meta";
 
 function Home() {
-  
   const [apiData, setApiData] = useState([]);
   const [apiData2, setApiData2] = useState([]);
   const [apiData3, setApiData3] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [stateName, setStateName] = useState("");
+  const [stateName, setStateName] = useState("Towing Us");
   let [color, setColor] = useState("#ffffff");
 
   const { state, city } = useParams();
@@ -40,7 +39,7 @@ function Home() {
     apiDatas();
   }, []);
 
-  const { states } = apiData;
+  const { keyword, states } = apiData;
   const { zips } = apiData3;
 
   var title = `Towing USA - ${stateName}`;
@@ -53,7 +52,7 @@ function Home() {
     meta: {
       charset: "utf-8",
       name: {
-        keywords: "react,meta,document,html,tags",
+        keywords: `${keyword}`,
       },
     },
   };
@@ -81,7 +80,7 @@ function Home() {
               {states
                 ? states.map((state, i) => (
                     <Link
-                    className="item-list"
+                      className="item-list"
                       key={i}
                       onClick={() => {
                         setStateName(state);
